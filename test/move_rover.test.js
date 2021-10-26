@@ -1,9 +1,14 @@
 const moveRover = require('../src/move_rover');
+const roverActions = require('../src/rover_actions');
+jest.mock('../src/rover_actions');
+
+
+
 
 beforeEach(()=>{
     roverWrongNoDir = {
         gridSize: '5 5',
-        currentPosition: '1 2 I',
+        currentPosition: '1 2',
         movePath: 'LMLMLMLMM'
     };
     roverWrongExceedGridSize = {
@@ -54,5 +59,3 @@ test('test successful', () => {
     // Assert
     expect(finalPosition).toBe('1 3 N');
 });
-
-
