@@ -1,4 +1,4 @@
-const roverActions = require('./rover_actions');
+const roverActions = require("../src/rover_actions");
 
 function moveRover(gridSize,currentPosition,path){
     let gridSizeArray = gridSize.split(' ');
@@ -13,14 +13,14 @@ function moveRover(gridSize,currentPosition,path){
             currentDirection = roverActions.updatedLeftDirection(currentDirection);
             curPosArray[2] = currentDirection;
         }else{
-            if(currentDirection=== 'N' || 'S'){
+            if(currentDirection=== 'N' || currentDirection==='S'){
                 curPosArray[1] = roverActions.updatedPositionY(currentDirection,curPosArray[1]);
             }else{
                 curPosArray[0] = roverActions.updatedPositionX(currentDirection,curPosArray[0]);
             }
         }
     });
-    return '1 3 N';
+    return curPosArray[0]+' '+curPosArray[1]+' '+curPosArray[2];
 }
 
 function inputValidation(gridSizeArr,curPosArr,path){

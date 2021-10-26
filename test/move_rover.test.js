@@ -1,6 +1,8 @@
 const moveRover = require('../src/move_rover');
 const roverActions = require('../src/rover_actions');
-jest.mock('../src/rover_actions');
+const updatedLeftDirection = jest.spyOn(roverActions, 'updatedLeftDirection');
+const updatedPositionY = jest.spyOn(roverActions, 'updatedPositionY');
+const updatedPositionX = jest.spyOn(roverActions, 'updatedPositionX');
 
 beforeEach(()=>{
     roverWrongNoDir = {
@@ -58,5 +60,17 @@ test('test successful', () => {
     const finalPosition = moveRover(gridSize,currentPosition,path);
 
     // Assert
+    expect(updatedLeftDirection)
+        .toHaveBeenCalledWith(currentPosition[4]);
+    expect(updatedLeftDirection)
+        .toHaveBeenCalledTimes(4);
+    /*expect(updatedPositionX)
+        .toHaveBeenCalledWith(currentPosition[4],currentPosition[0]);
+    expect(updatedPositionX)
+        .toHaveBeenCalledTimes(2);*/
+    /*expect(updatedPositionY)
+        .toHaveBeenCalledWith(currentPosition[4],currentPosition[2]);
+    expect(updatedPositionY)
+        .toHaveBeenCalledTimes(3);*/
     expect(finalPosition).toBe('1 3 N');
 });

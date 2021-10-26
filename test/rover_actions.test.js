@@ -25,6 +25,10 @@ beforeEach(()=>{
     };
 });
 
+afterEach(() => {
+    jest.clearAllMocks();
+});
+
 test('test turn left', () => {
     // Arrange
     const currentDirection = turnLeft.currentDirection;
