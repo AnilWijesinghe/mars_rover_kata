@@ -14,9 +14,9 @@ function moveRover(gridSize,currentPosition,path){
             curPosArray[2] = currentDirection;
         }else{
             if(currentDirection=== 'N' || 'S'){
-                curPosArray[1] = roverActions.updatedPositionY(curPosArray[1]);
+                curPosArray[1] = roverActions.updatedPositionY(currentDirection,curPosArray[1]);
             }else{
-                curPosArray[0] = roverActions.updatedPositionX(curPosArray[0]);
+                curPosArray[0] = roverActions.updatedPositionX(currentDirection,curPosArray[0]);
             }
         }
     });

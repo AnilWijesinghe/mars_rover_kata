@@ -2,9 +2,6 @@ const moveRover = require('../src/move_rover');
 const roverActions = require('../src/rover_actions');
 jest.mock('../src/rover_actions');
 
-
-
-
 beforeEach(()=>{
     roverWrongNoDir = {
         gridSize: '5 5',
@@ -21,6 +18,10 @@ beforeEach(()=>{
         currentPosition: '1 2 N',
         movePath: 'LMLMLMLMM'
     };
+});
+
+afterEach(() => {
+    jest.clearAllMocks();
 });
 
 test('test Un-successful no direction in current position', () => {
