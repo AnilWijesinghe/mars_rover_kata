@@ -4,10 +4,14 @@ const updatedLeftDirection = jest.spyOn(roverActions, 'updatedLeftDirection');
 const updatedPositionY = jest.spyOn(roverActions, 'updatedPositionY');
 const updatedPositionX = jest.spyOn(roverActions, 'updatedPositionX');
 
+let roverWrongNoDir;
+let roverWrongExceedGridSize;
+let roverSuccessInput;
+
 beforeEach(()=>{
     roverWrongNoDir = {
         gridSize: '5 5',
-        currentPosition: '1 2',
+        currentPosition: '1 2 I',
         movePath: 'LMLMLMLMM'
     };
     roverWrongExceedGridSize = {
@@ -50,7 +54,7 @@ test('test Un-successful when grid size exceed path', () => {
     }).toThrow('Path exceeded grid dimensions');
 });
 
-test('test successful', () => {
+test('rove move successfully', () => {
     // Arrange
     const gridSize = roverSuccessInput.gridSize;
     const currentPosition = roverSuccessInput.currentPosition;
@@ -64,13 +68,13 @@ test('test successful', () => {
         .toHaveBeenCalledWith(currentPosition[4]);
     expect(updatedLeftDirection)
         .toHaveBeenCalledTimes(4);
-    /*expect(updatedPositionX)
-        .toHaveBeenCalledWith(currentPosition[4],currentPosition[0]);
     expect(updatedPositionX)
-        .toHaveBeenCalledTimes(2);*/
-    /*expect(updatedPositionY)
-        .toHaveBeenCalledWith(currentPosition[4],currentPosition[2]);
+        .toHaveBeenCalledWith('W','1');
+    expect(updatedPositionX)
+        .toHaveBeenCalledTimes(2);
     expect(updatedPositionY)
-        .toHaveBeenCalledTimes(3);*/
+        .toHaveBeenCalledWith('S','2');
+    expect(updatedPositionY)
+        .toHaveBeenCalledTimes(3);
     expect(finalPosition).toBe('1 3 N');
 });

@@ -1,5 +1,12 @@
 const roverActions = require('../src/rover_actions');
 
+let turnLeft;
+let turnRight;
+let moveYAxisN;
+let moveYAxisS;
+let moveXAxisE;
+let moveXAxisW;
+
 beforeEach(()=>{
     turnLeft = {
         currentDirection:'N'
