@@ -10,7 +10,21 @@ You're sections headers will be used to reference location of destination.
 - [Approaches](#Approaches)
 - [Future thoughts](#Future-thoughts)
 
-## Key features of solution 
+## Key features of solution
+- Move rover around the surface of mars.
+
 ## Assumptions
+- Plateau is a rectangular grid.
+- There is only one rover.
+- A Rover’s position is represented by x and y co-ordinates and the letters N, S, W, E to represent North,
+South, West, East.
+- Rover's path defined by using L,M,R to represent
+    - L Spins the Rover 90 degrees Left
+    - R Spins the Rover 90 degrees Right
+    - M Moves the Rover forward by one grid point, maintaining the same
+direction
+- Single M in a path for a one move 
+- Pass arguments as grid size,current position,path.
+
 ## Approaches 
 ## Future thoughts
