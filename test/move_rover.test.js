@@ -5,8 +5,12 @@ const updatedPositionY = jest.spyOn(roverActions, 'updatedPositionY');
 const updatedPositionX = jest.spyOn(roverActions, 'updatedPositionX');
 
 let roverWrongNoDir;
+let roverNegativeNum;
 let roverWrongExceedGridSize;
+let roverPathUndefChar;
+let roverPassGridEdges;
 let roverSuccessInput;
+
 
 beforeEach(()=>{
     roverWrongNoDir = {
@@ -14,10 +18,25 @@ beforeEach(()=>{
         currentPosition: '1 2 I',
         movePath: 'LMLMLMLMM'
     };
+    roverNegativeNum = {
+        gridSize: '-5 5',
+        currentPosition: '1 2 N',
+        movePath: 'LMLMLMLMM'
+    };
     roverWrongExceedGridSize = {
         gridSize: '5 5',
         currentPosition: '1 6 N',
         movePath: 'LMKLMLMLMM'
+    };
+    roverPathUndefChar = {
+        gridSize: '5 5',
+        currentPosition: '1 2 N',
+        movePath: 'LMLMLMLMY'
+    };
+    roverPassGridEdges = {
+        gridSize: '5 5',
+        currentPosition: '1 2 N',
+        movePath: 'LMLMLMLMMMMM'
     };
     roverSuccessInput = {
         gridSize: '5 5',
@@ -42,6 +61,19 @@ test('test Un-successful no direction in current position', () => {
     }).toThrow('Current position should include N,E,S,W as the facing direction');
 });
 
+test('test Un-successful when passing negative values', () => {
+    // Arrange
+    const gridSize = roverNegativeNum.gridSize;
+    const currentPosition = roverNegativeNum.currentPosition;
+    const path = roverNegativeNum.movePath;
+
+    // Act and Assert
+    expect(()=>{
+        moveRover(gridSize,currentPosition,path);
+    }).toThrow('Grid size and current position can not contain negative numbers');
+});
+
+
 test('test Un-successful when grid size exceed path', () => {
     // Arrange
     const gridSize = roverWrongExceedGridSize.gridSize;
@@ -52,6 +84,30 @@ test('test Un-successful when grid size exceed path', () => {
     expect(()=>{
         moveRover(gridSize,currentPosition,path);
     }).toThrow('Path exceeded grid dimensions');
+});
+
+test('test unsuccessful rover path having undefined characters', () => {
+    // Arrange
+    const gridSize = roverPathUndefChar.gridSize;
+    const currentPosition = roverPathUndefChar.currentPosition;
+    const path = roverPathUndefChar.movePath;
+
+    // Act and Assert
+    expect(()=>{
+        moveRover(gridSize,currentPosition,path);
+    }).toThrow('Path should have only L,M,R');
+});
+
+test('test for move rover passing grid edges', () => {
+    // Arrange
+    const gridSize = roverPassGridEdges.gridSize;
+    const currentPosition = roverPassGridEdges.currentPosition;
+    const path = roverPassGridEdges.movePath;
+
+    // Act and Assert
+    expect(()=>{
+        moveRover(gridSize,currentPosition,path);
+    }).toThrow('Rover can not move passing grid edges');
 });
 
 test('rove move successfully', () => {
