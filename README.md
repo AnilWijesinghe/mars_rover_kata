@@ -37,4 +37,7 @@ direction
 - Exception handling.
 
 ## Future thoughts
+- Seperate classess,funtions have been maintained for adding new features in the future.      
+- The function written to handle the exceptions can be modified for handling the exceptions with future extentions of the solution.
+- There is a seperate class for define rover's movements then ability to add more movements in the future easily. 
 
