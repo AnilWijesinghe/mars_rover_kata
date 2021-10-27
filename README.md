@@ -34,10 +34,11 @@ direction
 ## Approaches
 - Modelling the problem first to plan out the ideas.
 - Apply Test-Driven Development (TDD) to test-drive solution.
+- Seperate classess,funtions have been maintained.
 - Exception handling.
 
+
 ## Future thoughts
-- Seperate classess,funtions have been maintained for adding new features in the future.      
+- There is a separate class written to define the rover's movements. Therefore, new movements can be easily added when extending the solution in future.
 - The function written to handle the exceptions can be modified for handling the exceptions with future extentions of the solution.
-- There is a seperate class for define rover's movements then ability to add more movements in the future easily. 
 
