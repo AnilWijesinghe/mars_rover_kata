@@ -5,10 +5,15 @@
 ### Table of Contents
 You're sections headers will be used to reference location of destination.
 
+- [Technologies](#Technologies)
 - [Key features of solution](#Key-features-of-solution)
 - [Assumptions](#Assumptions)
 - [Approaches](#Approaches)
 - [Future thoughts](#Future-thoughts)
+
+## Technologies
+- JavaScript
+- Jest unit test framework
 
 ## Key features of solution
 - Move rover around the surface of mars.
@@ -26,5 +31,10 @@ direction
 - Single M in a path for a one move 
 - Pass arguments as grid size,current position,path.
 
-## Approaches 
+## Approaches
+- Modelling the problem first to plan out the ideas.
+- Apply Test-Driven Development (TDD) to test-drive solution.
+- Exception handling.
+
 ## Future thoughts
+
